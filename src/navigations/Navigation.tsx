@@ -27,3 +27,5 @@ const Navigation: FC = () => {
         </NavigationContainer>
     )
 }
+
+export default Navigation;
