@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from 'react-native';
+import React from 'react';
 
 const OtpVerify = () => {
-    return (
-        <View>
-            <Text>OtpVerify</Text>
-        </View>
-    )
-}
+  return (
+    <View>
+      <Text>OtpVerify</Text>
+    </View>
+  );
+};
 
-export default OtpVerify
+export default OtpVerify;

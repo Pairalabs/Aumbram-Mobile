@@ -1,3 +1,3 @@
 export default {
-    spalashBackground: require('../assets/images/Onboarding.png')
-}
+  spalashBackground: require('../assets/images/Onboarding.png'),
+};

@@ -1,20 +1,23 @@
-import { View, Text, Pressable } from 'react-native'
-import React from 'react'
+import { View, Text, Pressable } from 'react-native';
+import React from 'react';
 import { navigate } from '@navigations/NavigationUtils';
 import navigationStrings from '@constants/navigationStrings';
 
 const OnBoarding = () => {
-    const navigateTo = () => {
-        navigate(navigationStrings.PUBLIC.LOGIN);
-    }
-    return (
-        <View>
-            <Text>OnBoarding</Text>
-            <Pressable onPress={navigateTo} className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">
-                <Text className="text-black dark:text-white font-bold">Login</Text>
-            </Pressable>
-        </View>
-    )
-}
+  const navigateTo = () => {
+    navigate(navigationStrings.PUBLIC.LOGIN);
+  };
+  return (
+    <View>
+      <Text>OnBoarding</Text>
+      <Pressable
+        onPress={navigateTo}
+        className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded"
+      >
+        <Text className="text-black dark:text-white font-bold">Login</Text>
+      </Pressable>
+    </View>
+  );
+};
 
-export default OnBoarding
+export default OnBoarding;

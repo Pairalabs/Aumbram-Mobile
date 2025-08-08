@@ -11,26 +11,26 @@ const { assetExts, sourceExts } = defaultConfig.resolver;
  * @type {import('metro-config').MetroConfig}
  */
 const customConfig = {
-    transformer: {
-        babelTransformerPath: require.resolve('react-native-svg-transformer'),
-    },
-    resolver: {
-        assetExts: [
-            ...assetExts.filter(ext => ext !== 'svg'),
-            'obj',
-            'mtl',
-            'mp3',
-            'JPG',
-            'vrx',
-            'hdr',
-            'gltf',
-            'glb',
-            'bin',
-            'arobject',
-            'gif',
-        ],
-        sourceExts: [...sourceExts, 'svg'],
-    },
+  transformer: {
+    babelTransformerPath: require.resolve('react-native-svg-transformer'),
+  },
+  resolver: {
+    assetExts: [
+      ...assetExts.filter(ext => ext !== 'svg'),
+      'obj',
+      'mtl',
+      'mp3',
+      'JPG',
+      'vrx',
+      'hdr',
+      'gltf',
+      'glb',
+      'bin',
+      'arobject',
+      'gif',
+    ],
+    sourceExts: [...sourceExts, 'svg'],
+  },
 };
 
 const mergedConfig = mergeConfig(defaultConfig, customConfig);
