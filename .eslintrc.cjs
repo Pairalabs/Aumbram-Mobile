@@ -15,5 +15,6 @@ module.exports = {
     'react-native/no-unused-styles': 'error',
     'react-native/no-color-literals': 'warn',
     'react-native/split-platform-components': 'warn',
+    'react/react-in-jsx-scope': 'off',
   },
 };
