@@ -3,7 +3,7 @@ import { MMKV } from 'react-native-mmkv';
 const storage = new MMKV();
 
 
-const reduxStorage = {
+const LocalStorage = {
     setItem: (key: string, val: any) => {
         storage.set(key, val);
         return Promise.resolve(true);
@@ -15,7 +15,11 @@ const reduxStorage = {
     removeItem: (key: string) => {
         storage.delete(key);
         return Promise.resolve();
+    },
+    clearAll: () => {
+        storage.clearAll();
+        return Promise.resolve();
     }
 }
 
-export default reduxStorage;
+export default LocalStorage;

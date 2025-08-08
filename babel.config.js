@@ -22,6 +22,7 @@ module.exports = function (api) {
             '@helper': './src/helper',
             '@navigations': './src/navigations',
             '@screens': './src/screens',
+            '@i18n': './src/i18n',
           },
         },
       ],

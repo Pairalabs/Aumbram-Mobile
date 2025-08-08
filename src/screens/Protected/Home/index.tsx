@@ -1,12 +1,16 @@
-import { Pressable, SafeAreaView, StatusBar, Text, useColorScheme, View } from 'react-native';
+import { Alert, Pressable, SafeAreaView, StatusBar, Text, useColorScheme, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import "./global.css";
 import { colorScheme } from 'nativewind';
-import './src/i18n';
 import { useTranslation } from 'react-i18next';
+import { resetAndNavigate } from '@navigations/NavigationUtils';
+import navigationStrings from '@constants/navigationStrings';
+import LocalStorage from '@states/storage';
+import { AuthStore } from '@states/store';
 
 const Home = () => {
     const systemColorScheme = useColorScheme();
+    const AuthState = AuthStore(state=> state);
+
     const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>(
         systemColorScheme === 'dark' ? 'dark' : 'light'
     );
@@ -30,6 +34,23 @@ const Home = () => {
         setLanguage(newLang);
         i18n.changeLanguage(newLang);
     };
+
+    const onLogoutPress = () => {
+        Alert.alert("Are you sure ?", "You want to logout.", [
+            {
+                text: 'No',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+            },
+            { text: 'YES', onPress: () => {
+                LocalStorage.clearAll();
+                AuthState.setUser(false);
+                resetAndNavigate(navigationStrings.PUBLIC.LOGIN);
+            } }
+        ]);
+    }
+
+
     return (
         <SafeAreaView className="flex-1 items-center justify-center bg-white dark:bg-black">
             <StatusBar barStyle={currentTheme == "dark" ? 'light-content' : 'dark-content'} />
@@ -43,6 +64,10 @@ const Home = () => {
 
             <Pressable onPress={toggleLanguage} className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">
                 <Text className="text-black dark:text-white font-bold">{t('language_toggle')}</Text>
+            </Pressable>
+            
+            <Pressable onPress={onLogoutPress} className="mt-4 px-4 py-2 bg-red-600 dark:bg-gray-700 rounded">
+                <Text className="text-white dark:text-white font-bold">Logout</Text>
             </Pressable>
         </SafeAreaView>
     )

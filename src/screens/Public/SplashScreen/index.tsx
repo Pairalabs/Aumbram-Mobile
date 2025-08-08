@@ -1,24 +1,32 @@
-import { View, Text, Pressable, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { navigate } from '@navigations/NavigationUtils'
+import { View, Text, Pressable, TouchableOpacity, SafeAreaView, ImageBackground, Image } from 'react-native'
+import React, { useEffect } from 'react'
+import { resetAndNavigate } from '@navigations/NavigationUtils'
 import navigationStrings from '@constants/navigationStrings'
-import InputText from '@components/InputText'
+import ImagePaths from '@constants/ImagePaths'
+import AppStatusBar from '@components/AppStatusBar'
 
 const SplashScreen = () => {
-    const navigateTo = () => {
-        navigate(navigationStrings.PUBLIC.ONBOARDING);
-    }
-    return (
-        <View>
-            <Text>SplashScreen</Text>
-            <Pressable onPress={navigateTo} className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">
-                <Text className="text-black dark:text-white font-bold">On Boarding</Text>
-            </Pressable>
-            <TouchableOpacity>
+     useEffect(() => {
+         const timeoutId = setTimeout(() => {
+             resetAndNavigate(navigationStrings.PUBLIC.LOGIN);
+         }, 3000);
+ 
+         return () => clearTimeout(timeoutId);
+     }, []);
 
-            </TouchableOpacity>
-            <InputText label="Enter your name" />
-            <Text className='font-'>Hello</Text>
+
+    return (
+        <View className='flex-1 items-center justify-center'>
+            <AppStatusBar />
+            <ImageBackground
+                source={ImagePaths.spalashBackground}
+                resizeMode="cover"
+                className="flex-1 w-full h-full"
+            >
+                <View className='flex-1 items-center justify-cente'>
+                    <Text className='text-white text-[16px] font-normal tracking-[0.5px] font-Satoshi-Variable'>Empowering India’s Entrepreneurs</Text>
+                </View>
+            </ImageBackground>
         </View>
     )
 }

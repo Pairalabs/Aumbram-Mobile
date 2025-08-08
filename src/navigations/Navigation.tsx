@@ -1,29 +1,15 @@
 import React, { FC } from 'react'
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from './NavigationUtils';
-import SplashScreen from '@screens/Public/SplashScreen';
-import OnBoarding from '@screens/Public/OnBoarding';
-import navigationStrings from '@constants/navigationStrings';
-import Login from '@screens/Public/Login';
-import OtpVerify from '@screens/Public/OtpVerify';
-
-const Stack = createNativeStackNavigator();
+import PublicStack from './PublicStack';
+import { AuthStore } from '@states/store';
+import ProtectedStack from './ProtectedStack';
 
 const Navigation: FC = () => {
+    const AuthState = AuthStore((state) => state);
     return (
         <NavigationContainer ref={navigationRef}>
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false
-                }}
-                initialRouteName={navigationStrings.PUBLIC.SPLASH}
-            >
-                <Stack.Screen name={navigationStrings.PUBLIC.SPLASH} component={SplashScreen} />
-                <Stack.Screen name={navigationStrings.PUBLIC.ONBOARDING} component={OnBoarding} />
-                <Stack.Screen name={navigationStrings.PUBLIC.LOGIN} component={Login} />
-                <Stack.Screen name={navigationStrings.PUBLIC.OTP_VERIFY} component={OtpVerify} />
-            </Stack.Navigator>
+            { AuthState.isLoggedin ? <ProtectedStack /> : <PublicStack /> }
         </NavigationContainer>
     )
 }
