@@ -1,4 +1,4 @@
-import { Alert, Pressable, SafeAreaView, StatusBar, Text, useColorScheme, View } from 'react-native';
+import { Alert, Pressable, SafeAreaView, StatusBar, Text, useColorScheme } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { colorScheme } from 'nativewind';
 import { useTranslation } from 'react-i18next';
@@ -50,7 +50,7 @@ const Home = () => {
         Alert.alert("Are you sure ?", "You want to logout.", [
             {
                 text: 'No',
-                onPress: () => console.log('Cancel Pressed'),
+                // onPress: () => console.log('Cancel Pressed'),
                 style: 'cancel',
             },
             {
@@ -70,7 +70,7 @@ const Home = () => {
 
     return (
         <SafeAreaView className="flex-1 items-center justify-center bg-white dark:bg-black">
-            <StatusBar barStyle={currentTheme == "dark" ? 'light-content' : 'dark-content'} />
+            <StatusBar barStyle={currentTheme === "dark" ? 'light-content' : 'dark-content'} />
             <Text className="text-xl font-bold text-blue-500 dark:text-blue-300 font-Satoshi-Variable">
                 {t('welcome')}
             </Text>

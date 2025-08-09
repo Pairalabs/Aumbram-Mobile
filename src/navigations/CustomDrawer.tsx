@@ -1,10 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import { AuthStore } from '@states/store';
 
 const CustomDrawer = (props: any) => {
-    const { setUser } = AuthStore();
 
     return (
         <View className="flex-1">

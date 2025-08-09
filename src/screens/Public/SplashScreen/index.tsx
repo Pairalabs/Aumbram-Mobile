@@ -1,4 +1,4 @@
-import { View, Text, Pressable, TouchableOpacity, SafeAreaView, ImageBackground, Image } from 'react-native'
+import { View, Text, ImageBackground } from 'react-native'
 import React, { useEffect } from 'react'
 import { resetAndNavigate } from '@navigations/NavigationUtils'
 import navigationStrings from '@constants/navigationStrings'
@@ -6,13 +6,13 @@ import ImagePaths from '@constants/ImagePaths'
 import AppStatusBar from '@components/AppStatusBar'
 
 const SplashScreen = () => {
-     useEffect(() => {
-         const timeoutId = setTimeout(() => {
-             resetAndNavigate(navigationStrings.PUBLIC.LOGIN);
-         }, 3000);
- 
-         return () => clearTimeout(timeoutId);
-     }, []);
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            resetAndNavigate(navigationStrings.PUBLIC.LOGIN);
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+    }, []);
 
 
     return (

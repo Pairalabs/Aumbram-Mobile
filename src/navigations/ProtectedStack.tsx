@@ -1,6 +1,5 @@
 import navigationStrings from "@constants/navigationStrings";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "@screens/Protected/Home";
 import React, { FC } from "react";
 import DrawerStack from "./DrawerStack";
 
