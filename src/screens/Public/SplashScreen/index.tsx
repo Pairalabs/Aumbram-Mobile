@@ -2,7 +2,7 @@ import { View, Text, ImageBackground } from 'react-native';
 import React, { useEffect } from 'react';
 import { resetAndNavigate } from '@navigations/NavigationUtils';
 import navigationStrings from '@constants/navigationStrings';
-import ImagePaths from '@constants/ImagePaths';
+import { ImagePaths } from '@constants/ImagePaths';
 import AppStatusBar from '@components/AppStatusBar';
 
 const SplashScreen = () => {
@@ -18,7 +18,7 @@ const SplashScreen = () => {
     <View className="flex-1 items-center justify-center">
       <AppStatusBar />
       <ImageBackground
-        source={ImagePaths.spalashBackground}
+        source={ImagePaths.blurBackgroundImage}
         resizeMode="cover"
         className="flex-1 w-full h-full"
       >
