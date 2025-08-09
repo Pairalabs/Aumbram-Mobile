@@ -7,13 +7,11 @@ const AppStatusBar: React.FC = () => {
     const themeMode = useColorScheme();
 
     const isDark = themeMode === 'dark';
-    
+
     return (
         <SafeAreaView
-            style={{
-                paddingTop: insets.top,
-                backgroundColor: "transparent",
-            }}
+            className="bg-transparent"
+            style={{ paddingTop: insets.top }}
         >
             <StatusBar
                 translucent

@@ -1,16 +1,22 @@
 import { MMKV } from 'react-native-mmkv';
 
-const storage = new MMKV();
-
+export const storage = new MMKV();
 
 const LocalStorage = {
     setItem: (key: string, val: any) => {
-        storage.set(key, val);
+        const value = typeof val === 'string' ? val : JSON.stringify(val);
+        storage.set(key, value);
         return Promise.resolve(true);
     },
-    getItem: (key: string) => {
+    getItem: <T = string>(key: string): Promise<T | null> => {
         const value = storage.getString(key);
-        return Promise.resolve(value);
+        if (!value) return Promise.resolve(null);
+
+        try {
+            return Promise.resolve(JSON.parse(value) as T);
+        } catch {
+            return Promise.resolve(value as T);
+        }
     },
     removeItem: (key: string) => {
         storage.delete(key);
@@ -19,7 +25,7 @@ const LocalStorage = {
     clearAll: () => {
         storage.clearAll();
         return Promise.resolve();
-    }
-}
+    },
+};
 
 export default LocalStorage;

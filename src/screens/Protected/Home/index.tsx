@@ -6,10 +6,21 @@ import { resetAndNavigate } from '@navigations/NavigationUtils';
 import navigationStrings from '@constants/navigationStrings';
 import LocalStorage from '@states/storage';
 import { AuthStore } from '@states/store';
+import { useNavigation } from '@react-navigation/native';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+
+
+type DrawerParamList = {
+    Home: undefined;
+    Category: undefined;
+    Cart: undefined;
+};
+
 
 const Home = () => {
+    const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
     const systemColorScheme = useColorScheme();
-    const AuthState = AuthStore(state=> state);
+    const AuthState = AuthStore(state => state);
 
     const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>(
         systemColorScheme === 'dark' ? 'dark' : 'light'
@@ -42,13 +53,19 @@ const Home = () => {
                 onPress: () => console.log('Cancel Pressed'),
                 style: 'cancel',
             },
-            { text: 'YES', onPress: () => {
-                LocalStorage.clearAll();
-                AuthState.setUser(false);
-                resetAndNavigate(navigationStrings.PUBLIC.LOGIN);
-            } }
+            {
+                text: 'YES', onPress: () => {
+                    LocalStorage.clearAll();
+                    AuthState.setUser(false);
+                    resetAndNavigate(navigationStrings.PUBLIC.LOGIN);
+                }
+            }
         ]);
     }
+
+    const onToggleDrawer = () => {
+        navigation.toggleDrawer();
+    };
 
 
     return (
@@ -65,7 +82,11 @@ const Home = () => {
             <Pressable onPress={toggleLanguage} className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">
                 <Text className="text-black dark:text-white font-bold">{t('language_toggle')}</Text>
             </Pressable>
-            
+
+            <Pressable onPress={onToggleDrawer} className="mt-4 px-4 py-2 bg-green-500 rounded">
+                <Text className="text-white font-bold">Toggle Drawer</Text>
+            </Pressable>
+
             <Pressable onPress={onLogoutPress} className="mt-4 px-4 py-2 bg-red-600 dark:bg-gray-700 rounded">
                 <Text className="text-white dark:text-white font-bold">Logout</Text>
             </Pressable>
