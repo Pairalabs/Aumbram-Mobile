@@ -1,10 +1,7 @@
 module.exports = function (api) {
   api.cache(true);
   return {
-    presets: [
-      'module:@react-native/babel-preset',
-      'nativewind/babel'
-    ],
+    presets: ['module:@react-native/babel-preset', 'nativewind/babel'],
     plugins: [
       'react-native-worklets/plugin',
       [
@@ -23,6 +20,7 @@ module.exports = function (api) {
             '@navigations': './src/navigations',
             '@screens': './src/screens',
             '@i18n': './src/i18n',
+            '@utility': './src/utility',
           },
         },
       ],

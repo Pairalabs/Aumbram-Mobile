@@ -3,7 +3,7 @@ export default {
     SPLASH: 'Splash',
     ONBOARDING: 'Onboarding',
     LOGIN: 'Login',
-    OTP_VERIFY: 'OtpVerify'
+    OTP_VERIFY: 'OtpVerify',
   },
   PROTECTED: {
     DRAWER_MAIN: 'DrawerMain',

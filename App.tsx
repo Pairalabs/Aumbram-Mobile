@@ -1,10 +1,8 @@
-import "./global.css";
+import './global.css';
 import Navigation from '@navigations/Navigation';
 
 function App() {
-  return (
-    <Navigation />
-  );
+  return <Navigation />;
 }
 
 export default App;

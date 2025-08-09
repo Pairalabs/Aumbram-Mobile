@@ -1,19 +1,19 @@
-import navigationStrings from "@constants/navigationStrings";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React, { FC } from "react";
-import DrawerStack from "./DrawerStack";
+import navigationStrings from '@constants/navigationStrings';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, { FC } from 'react';
+import DrawerStack from './DrawerStack';
 
 const Stack = createNativeStackNavigator();
 
 const ProtectedStack: FC = () => (
-    <Stack.Navigator
-        initialRouteName={navigationStrings.PROTECTED.DRAWER_MAIN}
-        screenOptions={{
-            headerShown: false
-        }}
-    >
-        <Stack.Screen name={navigationStrings.PROTECTED.DRAWER_MAIN} component={DrawerStack} />
-    </Stack.Navigator>
-)
+  <Stack.Navigator
+    initialRouteName={navigationStrings.PROTECTED.DRAWER_MAIN}
+    screenOptions={{
+      headerShown: false,
+    }}
+  >
+    <Stack.Screen name={navigationStrings.PROTECTED.DRAWER_MAIN} component={DrawerStack} />
+  </Stack.Navigator>
+);
 
 export default ProtectedStack;
